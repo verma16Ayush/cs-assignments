@@ -15,12 +15,13 @@
 int main()
 {
     int m, n, z;
-    printf("enter the dimensions for 3D matrix");
+    printf("enter the dimensions for 3D matrix: ");
     scanf("%d%d%d", &m, &n, &z);
-    int a[100][100][100];
-    for (int k = 0; k < z; k++)
+    int a[30][30][5];
+    int k = 0;
+    for (k = 0; k < z; k++)
     {
-        prinftf("enter the 2d matrix at a[][][%d]: \n", k);
+        printf("enter the 2d matrix at a[][][%d]: \n", k);
         for (int i = 0; i < m; i++)
         {
             for (int j = 0; j < n; j++)
@@ -29,5 +30,45 @@ int main()
             }
         }
     }
+
+    printf("the 3d matrix is as follows");
+    for(int k = 0; k < z; k++)
+    {
+        printf("\n\nk = %d\n", k);
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                printf("%d\t", a[i][j][k]);
+            }
+            printf("\n");
+        }
+    }
     
-}
+    
+    printf("insert another 2d matrix: \n");
+    z++;
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            scanf("%d", &a[i][j][k]);
+        }
+    }
+
+    printf("the 3d matrix is as follows");
+    for(int k = 0; k < z; k++)
+    {
+        printf("\n\nk = %d\n", k);
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                printf("%d\t", a[i][j][k]);
+            }
+            printf("\n");
+        }
+    }
+    getchar();
+    return 0;
+}   

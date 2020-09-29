@@ -103,7 +103,7 @@ void del_tail(struct Node** head_ref)
     free(temp);
 }
 
-void del_after_node(struct Node** head_ref, int c)
+void del_at_node(struct Node** head_ref, int c)
 {
     node_count--;
     struct Node* curr_node = *head_ref;
@@ -200,7 +200,7 @@ int main()
     else if(c >= node_count)
         printf("not enough nodes");
     else
-        del_after_node(&head, c);
+        del_at_node(&head, c);
     
     print_ll(&head);
 
