@@ -111,6 +111,8 @@ int main()
     // struct Node* rearranged_list = *(rearrange(&head));
     printf("rearranged list: ");
     print_ll(rearrange(&head));
+
+    getchar();
     return 0;
     
 }

@@ -133,5 +133,6 @@ int main()
     printf("merged list: \n");
     print_ll(&merge_head);
 
+    getchar();
     return 0;
 }

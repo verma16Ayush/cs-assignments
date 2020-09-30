@@ -77,6 +77,8 @@ int main()
     printf("deleting a node after head: ");
     del(&head, &(head->next));
     print_ll(&head);
+
+    getchar();
     return 0;
     
 }

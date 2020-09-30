@@ -208,5 +208,7 @@ int main()
     reverse_ll(&head);
     print_ll(&head);
 
+
+    getchar();
     return 0;
 }

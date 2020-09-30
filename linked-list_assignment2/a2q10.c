@@ -80,5 +80,6 @@ int main()
     reverse_pairs(&head);
     print_ll(&head);
 
+    getchar();
     return 0;
 }

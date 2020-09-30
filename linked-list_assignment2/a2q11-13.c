@@ -189,5 +189,6 @@ int main()
     }
     print_ll(&head);
     
+    getchar();
     return 0;
 }

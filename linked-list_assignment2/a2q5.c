@@ -87,5 +87,7 @@ int main()
     {
         find_node(&head, c);
     }
+
+    getchar();
     return 0;
 }

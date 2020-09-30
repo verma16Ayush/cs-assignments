@@ -80,5 +80,7 @@ int main()
     at_tail(&two, 10);
     print_ll(two);
     find_common(one, two);
+
+    getchar();
     return 0;
 }
