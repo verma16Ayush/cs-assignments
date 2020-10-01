@@ -105,9 +105,10 @@ void del_after_node(struct DL_node** head_ref, int c)
 void print_ll(struct DL_node** head_ref)
 {
     struct DL_node *curr_node = *head_ref;
+    printf("<-> ");
     for(curr_node = *head_ref; curr_node != NULL; curr_node=curr_node->next)
     {
-        printf("%d -> ", curr_node->data);
+        printf("%d <-> ", curr_node->data);
     }
     printf("\n");
 }
@@ -120,7 +121,7 @@ int main()
     printf("enter number of nodes: ");
     int n;
     scanf("%d", &n);
-    printf("enter data in nodes");
+    printf("enter data in nodes: ");
     int temp;
     scanf("%d", &temp);
     head->data = temp;
