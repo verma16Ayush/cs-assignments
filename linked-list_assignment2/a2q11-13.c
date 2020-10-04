@@ -27,7 +27,7 @@ void append(struct DL_node** head_ref, struct DL_node** tail, int data)
     node_count++;
     struct DL_node* curr_node = *head_ref;
     struct DL_node* new_node = (struct DL_node*)malloc(sizeof(struct DL_node));
-    for(curr_node; curr_node->next !=NULL; curr_node = curr_node ->next){}
+    for(curr_node; curr_node->next!=NULL; curr_node=curr_node->next){}
     new_node->data = data;
     new_node->prev = curr_node;
     curr_node->next = new_node;

@@ -64,6 +64,7 @@ int main()
     scanf("%d", &n);
     struct Node* head = (struct Node*)malloc(sizeof(struct Node));
     int temp;
+    printf("enter data in nodes: ");
     scanf("%d", &temp);
     head->data = temp;
     head->next = NULL;
@@ -78,7 +79,6 @@ int main()
     del(&head, &(head->next));
     print_ll(&head);
 
-    getchar();
     return 0;
     
 }
