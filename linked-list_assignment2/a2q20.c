@@ -81,7 +81,9 @@ void Split(struct Cnode** head_ref)
     list1 = *head_ref;
     list2 = slow_iter->next;
     slow_iter->next = list1;
-    fast_iter->next = list2;   
+    fast_iter->next = list2;
+    getchar();
+
 }
 
 int main()
@@ -103,5 +105,11 @@ int main()
     }
     PrintCl(&head);
     Split(&head);
+    printf("list1: \n");
+    PrintCl(&list1);
+    printf("list2: \n");
+    PrintCl(&list2);
+
     return 0;
+
 }
