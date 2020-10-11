@@ -139,6 +139,23 @@ void reverse_ll(struct Node** head_ref)
     *head_ref = prev;
 }
 
+void fun(struct Node* list)
+{
+    struct Node *p, *q;
+    int temp;
+    p = list;
+    q = list->next;
+    while(p)
+    {
+        temp = p->data;
+        p->data = q->data;
+        q->data = temp;
+        q = p ? p->next : 0;
+        p = q->next;
+    }
+    return;
+}
+
 
 int main()
 {
@@ -161,54 +178,56 @@ int main()
     }
     print_ll(&head);
 
-    printf("enter a node a at the head: ");
-    scanf("%d", &temp);
-    at_head(&head, temp);
-    print_ll(&head);
+    // printf("enter a node a at the head: ");
+    // scanf("%d", &temp);
+    // at_head(&head, temp);
+    // print_ll(&head);
 
-    printf("enter a node at the the tail: ");
-    scanf("%d", &temp);
-    at_tail(&head, temp);
-    print_ll(&head);
+    // printf("enter a node at the the tail: ");
+    // scanf("%d", &temp);
+    // at_tail(&head, temp);
+    // print_ll(&head);
 
-    printf("enter data to be inserted after node count c and enter value of c (zero based indexing): ");
-    scanf("%d", &temp);
-    int c;
-    scanf("%d", &c);
-    if(c == node_count - 1)
-        at_tail(&head, temp);
-    else if(c == 0)
-        at_head(&head, temp);
-    else
-        after_node(&head, temp, c);
-    print_ll(&head);
+    // printf("enter data to be inserted after node count c and enter value of c (zero based indexing): ");
+    // scanf("%d", &temp);
+    // int c;
+    // scanf("%d", &c);
+    // if(c == node_count - 1)
+    //     at_tail(&head, temp);
+    // else if(c == 0)
+    //     at_head(&head, temp);
+    // else
+    //     after_node(&head, temp, c);
+    // print_ll(&head);
 
-    printf("deleting the head: ");
-    del_head(&head);
-    print_ll(&head);
+    // printf("deleting the head: ");
+    // del_head(&head);
+    // print_ll(&head);
 
-    printf("deleting tail: ");
-    del_tail(&head);
-    print_ll(&head);
+    // printf("deleting tail: ");
+    // del_tail(&head);
+    // print_ll(&head);
 
-    printf("delete at node count of c, enter the value of c: ");
-    scanf("%d", &c);
-    if(c==0)
-        del_head(&head);
-    else if(c==node_count - 1)
-        del_tail(&head);
-    else if(c >= node_count)
-        printf("not enough nodes");
-    else
-        del_at_node(&head, c);
+    // printf("delete at node count of c, enter the value of c: ");
+    // scanf("%d", &c);
+    // if(c==0)
+    //     del_head(&head);
+    // else if(c==node_count - 1)
+    //     del_tail(&head);
+    // else if(c >= node_count)
+    //     printf("not enough nodes");
+    // else
+    //     del_at_node(&head, c);
     
-    print_ll(&head);
+    // print_ll(&head);
 
-    printf("reversing: ");
-    reverse_ll(&head);
-    print_ll(&head);
+    // printf("reversing: ");
+    // reverse_ll(&head);
+    // print_ll(&head);
 
 
-    getchar();
+    // getchar();
+
+    fun(head);
     return 0;
 }
