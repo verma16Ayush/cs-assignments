@@ -7,14 +7,6 @@
  * 
  **/
 
-/**
- * 
- * TODO: 
- * insert - head, end, mid
- * delete - head, end, mid
- * reverse
- *
- **/ 
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
