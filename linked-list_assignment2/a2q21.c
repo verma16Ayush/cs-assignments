@@ -47,7 +47,25 @@ void InsertAtHead(struct Node** head_ref, int data)
     new_node->data = data;
     new_node->next = *head_ref;
     new_node->prev = (*head_ref)->prev;
+    (*head_ref)->prev->next = new_node;
     *head_ref = new_node;
+}
+
+void DeleteHead(struct Node** head_ref)
+{
+    struct Node* temp = *head_ref;
+    (*head_ref)->prev->next = (*head_ref)->next;
+    (*head_ref)->next->prev = (*head_ref)->prev;
+    *head_ref = (*head_ref)->next;
+    free(temp);
+}
+
+void DeleteEnd(struct Node** head_ref)
+{
+    struct Node* temp = (*head_ref)->prev;
+    (*head_ref)->prev = (*head_ref)->prev->prev;
+    (*head_ref)->prev->next = *head_ref;
+    free(temp);
 }
 
 void PrintDcl(struct Node** head_ref)
@@ -59,6 +77,7 @@ void PrintDcl(struct Node** head_ref)
         curr_node = curr_node->next;
     } 
     while (curr_node!=*head_ref);
+    printf("\n");
 }
 
 int main()
@@ -79,10 +98,21 @@ int main()
         Append(&head, temp);
     }
     PrintDcl(&head);
+
+
     printf("\n");
     printf("enter data for a node at the head: ");
     scanf("%d", &temp);
     InsertAtHead(&head, temp);
     PrintDcl(&head);
+
+    printf("deleting head: \n");
+    DeleteHead(&head);
+    PrintDcl(&head);
+
+    printf("deleting end: \n");
+    DeleteEnd(&head);
+    PrintDcl(&head);
+
     return 0;
 }
