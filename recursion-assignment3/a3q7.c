@@ -32,7 +32,7 @@ void Append(struct Node** curr, int data)
     Append(&((*curr)->next), data);
 }
 
-struct Node* Merge2(struct Node* h1, struct Node* h2)
+struct Node* Merge(struct Node* h1, struct Node* h2)
 {
     struct Node* h = NULL;
     if(h1 == NULL) return h2;
@@ -41,12 +41,12 @@ struct Node* Merge2(struct Node* h1, struct Node* h2)
     if(h1->data <= h2->data)
     {
         h = h1;
-        h->next = Merge2(h1->next, h2);
+        h->next = Merge(h1->next, h2);
     }
     else
     {
         h = h2;
-        h->next = Merge2(h1, h2->next);
+        h->next = Merge(h1, h2->next);
     }
     return h;
 }
@@ -86,7 +86,7 @@ int main()
         scanf("%d", &temp);
         Append(&head2, temp);
     }
-    struct Node* head = Merge2(head1, head2);
+    struct Node* head = Merge(head1, head2);
     PrintList(head);
 
     return 0;
