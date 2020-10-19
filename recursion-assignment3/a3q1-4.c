@@ -102,7 +102,6 @@ void Insert(struct Node** curr, int t, int data)
     }
     counter++;
     Insert(&((*curr)->next), t, data);
- 
 }
 
 void PrintList(struct Node* curr)
