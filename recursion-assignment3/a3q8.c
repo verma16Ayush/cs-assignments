@@ -32,24 +32,24 @@ void Append(struct Node** curr, int data)
     Append(&((*curr)->next), data);
 }
 
-struct Node* Collect(struct Node* head, int even)
-{
-    /**
-     * @param - put even as 0 if you want to collect even numbers
-     **/
-    struct Node* h = NULL;
+// struct Node* Collect(struct Node* head, int even)
+// {
+//     /**
+//      * @param - put even as 0 if you want to collect even numbers
+//      **/
+//     struct Node* h = NULL;
 
-    if(head == NULL) return h;
+//     if(head == NULL) return h;
 
-    if(head->data % 2 == even)
-    {
-        h = head;
-        h->next = Collect(head->next, even);
-    }
-    else Collect(head->next, even);
+//     if(head->data % 2 == even)
+//     {
+//         h = head;
+//         h->next = Collect(head->next, even);
+//     }
+//     else Collect(head->next, even);
 
-    return h;
-}
+//     return h;
+// }
 
 void Rearrange(struct Node* head, struct Node* odd, struct Node* even, struct Node** oddRef)
 {
