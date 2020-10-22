@@ -87,6 +87,8 @@ void DeleteTail(struct Node** curr)
 void DeleteMid(struct Node** head, int t)
 {
     static int counter = 0;
+    if(t == 0) {DeleteHead(head); return;}
+
     if(counter <= t && *head == NULL)
     {
         printf("**NOT_ENOUGH_NODES**");
@@ -94,6 +96,7 @@ void DeleteMid(struct Node** head, int t)
     }
     if(counter==t)
     {
+        if((*head)->next == NULL) {DeleteTail(head); return;}
         struct Node* temp = *head;
         (*head)->prev->next = (*head)->next;
         (*head)->next->prev = (*head)->prev;

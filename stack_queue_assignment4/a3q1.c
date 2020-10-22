@@ -1,9 +1,9 @@
 /** 
  *
  * @author - Ayush Verma 194051
- * @title - utility.c
+ * @title - a3q1.c
  * @mail - 194051@nith.ac.in
- * @createdOn - 2020-10-20 13:43
+ * @createdOn - 2020-10-22 14:25
  * 
  **/
 #include <stdio.h>
@@ -27,8 +27,5 @@ void PrintInt(int a)
 
 int main()
 {
-    int n;
-    n = GetInt(NULL);
-    PrintInt(n);
-    return 0;
+    
 }
