@@ -68,6 +68,26 @@ void PrintList(struct Node* curr, struct Node** head)
     PrintList(curr->next, head);
 }
 
+void Reverse(struct Node* head, struct Node* tail, struct Node *p, struct Node *q)
+{
+
+    struct node *r=q->next;
+    if(head==NULL)
+    {
+        printf("List is empty!");
+        return;
+    }
+    if(q==head)
+    {
+        q->next = tail;
+        head=p;
+        return;
+    }
+    r=q->next;
+    q->next=p;
+    return Reverse(head, tail, q, r);
+}
+
 int main()
 {
     int n;

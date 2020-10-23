@@ -94,9 +94,13 @@ void DeleteMid(struct Node** head, int t)
         printf("**NOT_ENOUGH_NODES**");
         return;
     }
+
+    if(t == 0) {DeleteHead(head); return;}
+
     if(counter==t)
     {
         if((*head)->next == NULL) {DeleteTail(head); return;}
+        
         struct Node* temp = *head;
         (*head)->prev->next = (*head)->next;
         (*head)->next->prev = (*head)->prev;

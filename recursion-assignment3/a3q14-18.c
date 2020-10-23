@@ -89,6 +89,7 @@ void DeleteHead(struct Node** curr, struct Node** head)
     {
         struct Node* temp = *head;
         (*curr)->next = (*head)->next;
+        *head = (*head)->next;
         free(temp);
         return;
     }
@@ -160,12 +161,6 @@ int main()
     PrintList(head,&head);
     printf("\n");
 
-    printf("enter data to be inserted at head: ");
-    scanf("%d", &temp);
-    InsertAtHead(&head, &head, temp);
-    PrintList(head, &head);
-    printf("\n");
-
     printf("deleting head:\n");
     DeleteHead(&head, &head);
     PrintList(head, &head);
@@ -175,6 +170,8 @@ int main()
     DeleteTail(&head, &head);
     PrintList(head, &head);
     printf("\n");
+
+    
 
     return 0;
 }
