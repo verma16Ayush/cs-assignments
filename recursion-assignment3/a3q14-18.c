@@ -96,16 +96,37 @@ void DeleteHead(struct Node** curr, struct Node** head)
     DeleteHead(&((*curr)->next), head);
 }
 
-void DeleteTail(struct Node** curr, struct Node** head)
+void DeleteTail(struct Node** curr, struct Node** head, struct Node** tail)
 {
     if((*curr)->next->next == *head)
     {
         struct Node* temp = (*curr)->next;
         (*curr)->next = *head;
+        *tail = *curr;
         free(temp);
         return;
     }
-    DeleteTail(&((*curr)->next), head);
+    DeleteTail(&((*curr)->next), head, tail);
+}
+
+void Reverse(struct Node* head, struct Node* tail, struct Node *p, struct Node *q)
+{
+
+    struct Node *r=q->next;
+    if(head==NULL)
+    {
+        printf("List is empty!");
+        return;
+    }
+    if(q==head)
+    {
+        q->next = tail;
+        head=p;
+        return;
+    }
+    r=q->next;
+    q->next=p;
+    return Reverse(head, tail, q, r);
 }
 
 // void DeleteMid(struct Node** curr, struct Node** head, int t)
@@ -135,6 +156,7 @@ int main()
     scanf("%d", &n);
     int temp;
     struct Node* head = (struct Node*)malloc(sizeof(struct Node));
+    struct Node* tail = (struct Node*)malloc(sizeof(struct Node));
     printf("enter data in nodes: ");
     scanf("%d", &temp);
     head->data = temp;
@@ -167,10 +189,12 @@ int main()
     printf("\n");
 
     printf("Deleting tail: \n");
-    DeleteTail(&head, &head);
+    DeleteTail(&head, &head, &tail);
     PrintList(head, &head);
     printf("\n");
 
+    Reverse(head, tail, head, head->next);
+    PrintList(head, &head);
     
 
     return 0;

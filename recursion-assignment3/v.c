@@ -1,29 +1,31 @@
-#include<stdio.h>
-#include<stdlib.h>
-struct node{
+#include <stdio.h>
+#include <stdlib.h>
+struct node
+{
     int data;
     struct node *next;
 };
-struct node *head=NULL;
-struct node* tail=NULL;
+struct node *head = NULL;
+struct node *tail = NULL;
 
-void create(struct node* temp, int data)
+void create(struct node *temp, int data)
 {
-    if(temp == NULL){
-        struct node* newNode = (struct node*)malloc(sizeof(struct node));
+    if (temp == NULL)
+    {
+        struct node *newNode = (struct node *)malloc(sizeof(struct node));
         newNode->data = data;
-        
-        newNode->next=newNode;
-        
-        head=newNode;
+
+        newNode->next = newNode;
+
+        head = newNode;
         return;
     }
-    if(temp->next ==head)
+    if (temp->next == head)
     {
-        
-        struct node* newNode = (struct node*)malloc(sizeof(struct node));
+
+        struct node *newNode = (struct node *)malloc(sizeof(struct node));
         newNode->data = data;
-        
+
         newNode->next = head;
         temp->next = newNode;
         tail = newNode;
@@ -33,26 +35,29 @@ void create(struct node* temp, int data)
     create(temp->next, data);
 }
 
-
-void print(){
-    struct node *temp=head;
-    if(head==NULL){
+void print()
+{
+    struct node *temp = head;
+    if (head == NULL)
+    {
         printf("List is Empty!");
         return;
     }
     printf("Elements of Circular Linked List are:\n");
-    while(temp->next!=head){
+    while (temp->next != head)
+    {
         printf("%d\n", temp->data);
-        temp=temp->next;
+        temp = temp->next;
     }
-    printf("%d\n",temp->data);
+    printf("%d\n", temp->data);
     return;
 }
-int c=1;
-void countNodes(struct node *temp){
-    
-    
-    if(temp->next==head){
+int c = 1;
+void countNodes(struct node *temp)
+{
+
+    if (temp->next == head)
+    {
         return;
     }
     c++;
@@ -60,41 +65,40 @@ void countNodes(struct node *temp){
     // printf("Number of nodes in the circular linked list is: %d \n",c );
 }
 
-
 void reverse(struct node *p, struct node *q)
 {
 
-    struct node *r=q->next;
-    if(head==NULL)
+    struct node *r = q->next;
+    if (head == NULL)
     {
         printf("List is empty!");
         return;
     }
-    if(q==head)
+    if (q == head)
     {
         q->next = tail;
-        head=p;
+        head = p;
         return;
     }
-    r=q->next;
-    q->next=p;
+    r = q->next;
+    q->next = p;
     return reverse(q, r);
 }
 
-
-void Reverse(struct node** head)
+void Reverse(struct node **head)
 {
-    struct node* first;
-    struct node* rest;
+    struct node *first;
+    struct node *rest;
 
-    if(*head == NULL) return;     // empty list
+    if (*head == NULL)
+        return; // empty list
 
-    first = *head;                // eg first = 1->2->3
-    rest = first->next;           // rest = 2->3
+    first = *head;      // eg first = 1->2->3
+    rest = first->next; // rest = 2->3
 
-    if(rest == *head) 
+    if (rest == *head)
     {
-        return;      //empty rest
+        return; //empty rest
     }
     Reverse(&rest);
 
@@ -104,29 +108,27 @@ void Reverse(struct node** head)
     *head = rest;
 }
 
-
-
-int main(){
+int main()
+{
     int n;
     printf("Enter number of nodes ");
-    scanf("%d",&n);
-    
+    scanf("%d", &n);
+
     printf("Enter n elements in circular linked list\n");
-    while(n-->0){
+    while (n-- > 0)
+    {
         int a;
-        scanf("%d",&a);
-        create(head,a);
+        scanf("%d", &a);
+        create(head, a);
     }
     countNodes(head);
-    printf("Number of nodes in the circular linked list is: %d \n",c );
-    
+    printf("Number of nodes in the circular linked list is: %d \n", c);
 
-
-    struct node *p=head;
-    struct node *q=p->next;
+    struct node *p = head;
+    struct node *q = p->next;
 
     // p->next=NULL;
-    reverse(p,q);
+    reverse(p, q);
     print();
     return 0;
 }
