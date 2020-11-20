@@ -14,97 +14,100 @@
 
 struct Node
 {
-    int data;
-    struct Node* next;
+	int data;
+	struct Node *next;
 };
 
-int GetInt(const char* msg)
+int GetInt(const char *msg)
 {
-    if(msg) printf(msg);
-    int temp;
-    scanf("%d", &temp);
-    return temp;
+	if (msg)
+		printf(msg);
+	int temp;
+	scanf("%d", &temp);
+	return temp;
 }
 
-void PushStack(struct Node** stackHead, int data)
+void PushStack(struct Node **stackHead, int data)
 {
-    if(stackHead == NULL)
-    {
-        *stackHead = (struct Node*)malloc(sizeof(struct Node));
-        (*stackHead)->data = data;
-        (*stackHead)->next = NULL;
-        return;
-    }
+	if (stackHead == NULL)
+	{
+		*stackHead = (struct Node *)malloc(sizeof(struct Node));
+		(*stackHead)->data = data;
+		(*stackHead)->next = NULL;
+		return;
+	}
 
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    newNode->data = data;
-    newNode->next = *stackHead;
-    *stackHead = newNode;
-    return;
+	struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+	newNode->data = data;
+	newNode->next = *stackHead;
+	*stackHead = newNode;
+	return;
 }
 
-int PopStack(struct Node** stack)
+int PopStack(struct Node **stack)
 {
-    if(*stack == NULL) return NULL;
+	if (*stack == NULL)
+		return NULL;
 
-    int temp = (*stack)->data;
-    
-	struct Node* toDel = *stack;
+	int temp = (*stack)->data;
+
+	struct Node *toDel = *stack;
 	*stack = (*stack)->next;
 	free(toDel);
 	return temp;
 }
 
-void Enq(struct Node** rear, struct Node** front, int data)
+void Enq(struct Node **rear, struct Node **front, int data)
 {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    newNode->data = data;
-    newNode->next = NULL;
-    if(*front == NULL)
-    {
-        *front = newNode;
-        *rear = newNode;
-        return;
-    }
-    (*rear)->next = newNode;
-    *rear = newNode;
+	struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+	newNode->data = data;
+	newNode->next = NULL;
+	if (*front == NULL)
+	{
+		*front = newNode;
+		*rear = newNode;
+		return;
+	}
+	(*rear)->next = newNode;
+	*rear = newNode;
 }
 
-int Deq(struct Node** rear, struct Node** front)
+int Deq(struct Node **rear, struct Node **front)
 {
-    if(*front == NULL)
-    {
-        printf("\nQUEUE_EMPTY\n");
-        return NULL;
-    }
+	if (*front == NULL)
+	{
+		printf("\nQUEUE_EMPTY\n");
+		return NULL;
+	}
 
-    int temp = (*front)->data;
-     
-    if(*rear == *front)
-    {
-        *rear = NULL;
-        *front = NULL;
-        return temp;
-    }
+	int temp = (*front)->data;
 
-    struct Node* toDel = *front;
-    *front = (*front)->next;
-    free(toDel);
-    return temp;
+	if (*rear == *front)
+	{
+		*rear = NULL;
+		*front = NULL;
+		return temp;
+	}
+
+	struct Node *toDel = *front;
+	*front = (*front)->next;
+	free(toDel);
+	return temp;
 }
 
-void PrintQ(struct Node* curr)
+void PrintQ(struct Node *curr)
 {
-    if(curr == NULL) return;
-    printf("%d, ", curr->data);
-    PrintQ(curr->next);
+	if (curr == NULL)
+		return;
+	printf("%d, ", curr->data);
+	PrintQ(curr->next);
 }
 
 int main()
 {
-	struct Node* stackHead = NULL;
-	struct Node* front = NULL;
-	struct Node* rear = NULL;
+	struct Node *stackHead = NULL;
+	struct Node *front = NULL;
+	struct Node *rear = NULL;
 
 	int n = GetInt("enter no of elements in queue: ");
 	printf("enetr data in queue: ");
@@ -122,7 +125,7 @@ int main()
 	}
 
 	int t = PopStack(&stackHead);
-	while(t)	
+	while (t)
 	{
 		Enq(&rear, &front, t);
 		t = PopStack(&stackHead);
@@ -130,10 +133,10 @@ int main()
 
 	for (int i = 0; i < n - k; i++)
 	{
-		t  = Deq(&rear, &front);
+		t = Deq(&rear, &front);
 		Enq(&rear, &front, t);
 	}
-	
+
 	PrintQ(front);
 	return 0;
 }
